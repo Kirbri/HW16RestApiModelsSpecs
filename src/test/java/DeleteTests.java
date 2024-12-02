@@ -6,7 +6,7 @@ import static io.restassured.RestAssured.given;
 public class DeleteTests {
 
     /*
-1. Make request (DELETE) to https://reqres.in/api/users
+1. Make request (DELETE) to https://reqres.in/api/users{2, _, 19021}
 2. Check response code
 */
 
