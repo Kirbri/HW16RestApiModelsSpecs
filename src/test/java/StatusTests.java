@@ -10,7 +10,7 @@ public class StatusTests {
 /*
     1. Make request to https://selenoid.autotests.cloud/status
     2. Get response {  "total": 20,  "used": 0,  "queued": 0,  "pending": 0, ...}
-    3.Check total is 20
+    3. Check total is 20
 */
 
     @Test
