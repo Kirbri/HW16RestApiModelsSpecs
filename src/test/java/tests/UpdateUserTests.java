@@ -2,6 +2,7 @@ package tests;
 
 import models.lombok.UpdateUserBodyLombokModel;
 import models.lombok.UpdateUserResponseLombokModel;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
@@ -11,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static specs.UpdateUserSpec.updateUserRequestSpec;
 import static specs.UpdateUserSpec.updateUserResponseSpec;
 
+@Tag("HW16")
 public class UpdateUserTests extends TestBase {
  /*
     1. Make request (PUT) to https://reqres.in/api/users/{2sq, 0, 1, 2, !}

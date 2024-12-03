@@ -1,6 +1,7 @@
 package tests;
 
 import models.lombok.ListUsersResponseLombokModel;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
@@ -9,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static specs.ListUsersSpec.listUsersRequestSpec;
 import static specs.ListUsersSpec.listUsersResponseSpec;
 
+@Tag("HW16")
 public class ListUsersTests extends TestBase {
 
     /*

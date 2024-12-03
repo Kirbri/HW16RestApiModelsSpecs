@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
@@ -7,6 +8,7 @@ import static io.restassured.RestAssured.given;
 import static specs.DeleteSpec.deleteRequestSpec;
 import static specs.DeleteSpec.deleteResponseSpec;
 
+@Tag("HW16")
 public class DeleteTests extends TestBase {
 
     /*

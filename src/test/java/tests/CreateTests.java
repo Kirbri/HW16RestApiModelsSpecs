@@ -2,6 +2,7 @@ package tests;
 
 import models.lombok.CreateBodyLombokModel;
 import models.lombok.CreateResponseLombokModel;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
@@ -10,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static specs.CreateSpec.createRequestSpec;
 import static specs.CreateSpec.createResponseSpec;
 
+@Tag("HW16")
 public class CreateTests extends TestBase {
 
     /*

@@ -1,6 +1,7 @@
 package tests;
 
 import models.lombok.SingleUserResponseLombokModel;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
@@ -8,6 +9,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static specs.SingleUserSpec.*;
 
+@Tag("HW16")
 public class SingleUserTests extends TestBase {
  /*
     1. Make request to https://reqres.in/api/users/{0, 1, 2, !}
