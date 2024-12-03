@@ -1,6 +1,6 @@
 package tests;
 
-import models.lombok.CreateBodyLombokModel;
+import models.lombok.NameJobUserBodyLombokModel;
 import models.lombok.CreateResponseLombokModel;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.*;
-import static specs.CreateSpec.createRequestSpec;
-import static specs.CreateSpec.createResponseSpec;
+import static specs.GeneralSpec.requestSpecification;
+import static specs.GeneralSpec.responseSpecification201;
 
 @Tag("HW16")
 public class CreateTests extends TestBase {
@@ -23,17 +23,17 @@ with body { "name": "morpheus", "job": "leader" }
 
     @Test
     void successfulCreateTest() {
-        CreateBodyLombokModel authData = new CreateBodyLombokModel();
+        NameJobUserBodyLombokModel authData = new NameJobUserBodyLombokModel();
         authData.setName("Morpheus");
         authData.setJob("Leader");
 
         CreateResponseLombokModel response = step("Make request", () ->
-                given(createRequestSpec)
+                given(requestSpecification)
                         .body(authData)
                         .when()
-                        .post()
+                        .post("/users")
                         .then()
-                        .spec(createResponseSpec)
+                        .spec(responseSpecification201)
                         .extract().as(CreateResponseLombokModel.class));
 
         step("Check response", () -> {
@@ -46,15 +46,15 @@ with body { "name": "morpheus", "job": "leader" }
 
     @Test
     void successfulCreateNoDataTest() {
-        CreateBodyLombokModel authData = new CreateBodyLombokModel();
+        NameJobUserBodyLombokModel authData = new NameJobUserBodyLombokModel();
 
         CreateResponseLombokModel response = step("Make request", () ->
-                given(createRequestSpec)
+                given(requestSpecification)
                         .body(authData)
                         .when()
-                        .post()
+                        .post("/users")
                         .then()
-                        .spec(createResponseSpec)
+                        .spec(responseSpecification201)
                         .extract().as(CreateResponseLombokModel.class));
 
         step("Check response", () -> {

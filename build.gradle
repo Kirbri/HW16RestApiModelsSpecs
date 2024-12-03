@@ -49,7 +49,7 @@ tasks.withType(Test) {
     }
 }
 
-task smoke_test(type: Test) {
+task rest_test(type: Test) {
     useJUnitPlatform {
         includeTags("HW16")
     }

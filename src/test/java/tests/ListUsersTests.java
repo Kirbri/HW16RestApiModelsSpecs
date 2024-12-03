@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static specs.ListUsersSpec.listUsersRequestSpec;
-import static specs.ListUsersSpec.listUsersResponseSpec;
+import static specs.GeneralSpec.requestSpecification;
+import static specs.GeneralSpec.responseSpecification200;
 
 @Tag("HW16")
 public class ListUsersTests extends TestBase {
@@ -22,10 +22,10 @@ public class ListUsersTests extends TestBase {
     @Test
     void successfulLisUsersTest() {
         ListUsersResponseLombokModel response = step("Make response", () ->
-                given(listUsersRequestSpec)
-                        .get("?page=2")
+                given(requestSpecification)
+                        .get("/users?page=2")
                         .then()
-                        .spec(listUsersResponseSpec)
+                        .spec(responseSpecification200)
                         .extract().as(ListUsersResponseLombokModel.class));
 
         step("Check response", () -> {

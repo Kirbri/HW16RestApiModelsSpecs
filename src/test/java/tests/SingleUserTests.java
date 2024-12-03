@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static specs.SingleUserSpec.*;
+import static specs.GeneralSpec.*;
 
 @Tag("HW16")
 public class SingleUserTests extends TestBase {
@@ -20,20 +20,20 @@ public class SingleUserTests extends TestBase {
     @Test
     void successfulSingleUser0Test() {
         SingleUserResponseLombokModel response = step("Make response", () ->
-                given(singleUserRequestSpec)
-                        .get("/0")
+                given(requestSpecification)
+                        .get("/users/0")
                         .then()
-                        .spec(singleMissingUserResponseSpec)
+                        .spec(responseNotFoundSpecification404)
                         .extract().as(SingleUserResponseLombokModel.class));
     }
 
     @Test
     void successfulSingleUser1Test() {
         SingleUserResponseLombokModel response = step("Make response", () ->
-                given(singleUserRequestSpec)
-                        .get("/1")
+                given(requestSpecification)
+                        .get("/users/1")
                         .then()
-                        .spec(singleUserResponseSpec)
+                        .spec(responseSpecification200)
                         .extract().as(SingleUserResponseLombokModel.class));
 
         step("Check response", () -> {
@@ -52,10 +52,10 @@ public class SingleUserTests extends TestBase {
     @Test
     void successfulSingleUser2Test() {
         SingleUserResponseLombokModel response = step("Make response", () ->
-                given(singleUserRequestSpec)
-                        .get("/2")
+                given(requestSpecification)
+                        .get("/users/2")
                         .then()
-                        .spec(singleUserResponseSpec)
+                        .spec(responseSpecification200)
                         .extract().as(SingleUserResponseLombokModel.class));
 
         step("Check response", () -> {
@@ -74,10 +74,10 @@ public class SingleUserTests extends TestBase {
     @Test
     void successfulSingleUserNotNumTest() {
         SingleUserResponseLombokModel response = step("Make response", () ->
-                given(singleUserRequestSpec)
-                        .get("/!")
+                given(requestSpecification)
+                        .get("/users/!")
                         .then()
-                        .spec(singleMissingUserResponseSpec)
+                        .spec(responseNotFoundSpecification404)
                         .extract().as(SingleUserResponseLombokModel.class));
     }
 }

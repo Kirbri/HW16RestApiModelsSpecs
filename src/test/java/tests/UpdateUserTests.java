@@ -1,6 +1,6 @@
 package tests;
 
-import models.lombok.UpdateUserBodyLombokModel;
+import models.lombok.NameJobUserBodyLombokModel;
 import models.lombok.UpdateUserResponseLombokModel;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -9,8 +9,8 @@ import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static specs.UpdateUserSpec.updateUserRequestSpec;
-import static specs.UpdateUserSpec.updateUserResponseSpec;
+import static specs.GeneralSpec.requestSpecification;
+import static specs.GeneralSpec.responseSpecification200;
 
 @Tag("HW16")
 public class UpdateUserTests extends TestBase {
@@ -22,17 +22,17 @@ public class UpdateUserTests extends TestBase {
 
     @Test
     void successfulUpdateUser2sqTest() {
-        UpdateUserBodyLombokModel authData = new UpdateUserBodyLombokModel();
+        NameJobUserBodyLombokModel authData = new NameJobUserBodyLombokModel();
         authData.setName("NAME_test1");
         authData.setJob("JOB_test1");
 
         UpdateUserResponseLombokModel response = step("Make request", () ->
-                given(updateUserRequestSpec)
+                given(requestSpecification)
                         .body(authData)
                         .when()
-                        .put("/2sq")
+                        .put("/users/2sq")
                         .then()
-                        .spec(updateUserResponseSpec)
+                        .spec(responseSpecification200)
                         .extract().as(UpdateUserResponseLombokModel.class));
 
         step("Check response", () -> {
@@ -44,17 +44,17 @@ public class UpdateUserTests extends TestBase {
 
     @Test
     void successfulUpdateUser0Test() {
-        UpdateUserBodyLombokModel authData = new UpdateUserBodyLombokModel();
+        NameJobUserBodyLombokModel authData = new NameJobUserBodyLombokModel();
         authData.setName("name test2");
         authData.setJob("job test2");
 
         UpdateUserResponseLombokModel response = step("Make request", () ->
-                given(updateUserRequestSpec)
+                given(requestSpecification)
                         .body(authData)
                         .when()
-                        .put("/0")
+                        .put("/users/0")
                         .then()
-                        .spec(updateUserResponseSpec)
+                        .spec(responseSpecification200)
                         .extract().as(UpdateUserResponseLombokModel.class));
 
         step("Check response", () -> {
@@ -66,17 +66,17 @@ public class UpdateUserTests extends TestBase {
 
     @Test
     void successfulUpdateUser1Test() {
-        UpdateUserBodyLombokModel authData = new UpdateUserBodyLombokModel();
+        NameJobUserBodyLombokModel authData = new NameJobUserBodyLombokModel();
         authData.setName("NaMe test3");
         authData.setJob("JoB test3");
 
         UpdateUserResponseLombokModel response = step("Make request", () ->
-                given(updateUserRequestSpec)
+                given(requestSpecification)
                         .body(authData)
                         .when()
-                        .put("/1")
+                        .put("/users/1")
                         .then()
-                        .spec(updateUserResponseSpec)
+                        .spec(responseSpecification200)
                         .extract().as(UpdateUserResponseLombokModel.class));
 
         step("Check response", () -> {
@@ -84,17 +84,5 @@ public class UpdateUserTests extends TestBase {
             assertEquals("JoB test3", response.getJob());
             assertNotNull(response.getUpdatedAt());
         });
-
-//
-//        String updateData = "{\"name\": \"test3\", \"job\": \"test3\"}";
-//
-//        given()
-//                .body(updateData)
-//                .log().uri()
-//                .put("/1")
-//                .then()
-//                .log().body()
-//                .log().status()
-//                .statusCode(200);
     }
 }

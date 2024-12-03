@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
-import static specs.DeleteSpec.deleteRequestSpec;
-import static specs.DeleteSpec.deleteResponseSpec;
+import static specs.GeneralSpec.requestSpecification;
+import static specs.GeneralSpec.responseSpecification204;
 
 @Tag("HW16")
 public class DeleteTests extends TestBase {
@@ -19,30 +19,30 @@ public class DeleteTests extends TestBase {
     @Test
     void successfulDelete2Test() {
         step("Make response", () ->
-                given(deleteRequestSpec)
+                given(requestSpecification)
                         .when()
-                        .delete("/2")
+                        .delete("/users/2")
                         .then()
-                        .spec(deleteResponseSpec));
+                        .spec(responseSpecification204));
     }
 
     @Test
     void successfulDeleteTest() {
         step("Make response", () ->
-                given(deleteRequestSpec)
+                given(requestSpecification)
                         .when()
-                        .delete()
+                        .delete("/users")
                         .then()
-                        .spec(deleteResponseSpec));
+                        .spec(responseSpecification204));
     }
 
     @Test
     void successfulDelete19021Test() {
         step("Make response", () ->
-                given(deleteRequestSpec)
+                given(requestSpecification)
                         .when()
-                        .delete("/19021")
+                        .delete("/users/19021")
                         .then()
-                        .spec(deleteResponseSpec));
+                        .spec(responseSpecification204));
     }
 }
