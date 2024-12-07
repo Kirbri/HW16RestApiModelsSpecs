@@ -11,30 +11,30 @@ import static io.restassured.filter.log.LogDetail.BODY;
 import static io.restassured.filter.log.LogDetail.STATUS;
 
 public class GeneralSpec {
-    public static RequestSpecification requestSpecification = with()
+    public static final RequestSpecification requestSpecification = with()
             .filter(CustomAllureListener.withCustomTemplate())
             .log().all()
             .contentType(ContentType.JSON);
 
-    public static ResponseSpecification responseSpecification200 = new ResponseSpecBuilder()
+    public static final ResponseSpecification responseSpecification200 = new ResponseSpecBuilder()
             .expectStatusCode(200)
             .log(STATUS)
             .log(BODY)
             .build();
 
-    public static ResponseSpecification responseSpecification201 = new ResponseSpecBuilder()
+    public static final ResponseSpecification responseSpecification201 = new ResponseSpecBuilder()
             .expectStatusCode(201)
             .log(STATUS)
             .log(BODY)
             .build();
 
-    public static ResponseSpecification responseSpecification204 = new ResponseSpecBuilder()
+    public static final ResponseSpecification responseSpecification204 = new ResponseSpecBuilder()
             .expectStatusCode(204)
             .log(STATUS)
             .log(BODY)
             .build();
 
-    public static ResponseSpecification responseNotFoundSpecification404 = new ResponseSpecBuilder()
+    public static final ResponseSpecification responseNotFoundSpecification404 = new ResponseSpecBuilder()
             .expectStatusCode(404)
             .log(STATUS)
             .log(BODY)

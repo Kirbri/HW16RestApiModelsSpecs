@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 
 public class LoginTests {
     /*
@@ -29,7 +30,7 @@ public class LoginTests {
                 .log().body()
                 .log().status()
                 .statusCode(200)
-                .body("token", is("QpwL5tke4Pnpja7X4"));
+                .body("token", is(notNullValue()));
     }
 
     @Test

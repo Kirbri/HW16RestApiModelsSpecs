@@ -23,7 +23,8 @@ public class ListUsersTests extends TestBase {
     void successfulLisUsersTest() {
         ListUsersResponseLombokModel response = step("Make response", () ->
                 given(requestSpecification)
-                        .get("/users?page=2")
+                        .queryParam("page", "2")
+                        .get("/users")
                         .then()
                         .spec(responseSpecification200)
                         .extract().as(ListUsersResponseLombokModel.class));
